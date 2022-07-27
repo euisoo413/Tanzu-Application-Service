@@ -14,7 +14,7 @@ uaac target [uaa.sys.pas.*.com]
 
 uaac 인증 절차 수행
 ```
-uaac token client get admin [<U>password</U>]
+uaac token client get admin [__password__]
 ```
 > password 확인 방법
 >>`Ops Manager TAS Tile - Credentials TAB - Admin Client Credentials` 클릭 후 난수 비밀번호 확인
