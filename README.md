@@ -24,6 +24,12 @@ uaac token client get admin [Admin Client Credentials password]
 uaac user add [생성하려는 id]
 ```
 * uaac 계정 매핑
+* > 생성한 User가 특정 타일에서 동작할 수 있도록 권한을 넣어 줄 수 있음
 ```
 uaac member add healthwatch.admin [생성한 id] 
+```
+
+* uaac 계정 생성 확인
+```
+uaac users | grep "username"
 ```
