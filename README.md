@@ -14,7 +14,7 @@ uaac target [uaa.sys.pas.*.com]
 
 uaac 인증 절차 수행
 ```
-uaac token client get admin [__password__]
+uaac token client get admin [_password_]
 ```
 > password 확인 방법
 >>`Ops Manager TAS Tile - Credentials TAB - Admin Client Credentials` 클릭 후 난수 비밀번호 확인
@@ -25,5 +25,5 @@ uaac user add <u>생성하려는 id</u>
 ```
 uaac 계정 매핑
 ```
-uaac member add healthwatch.admin [<u> 생성한 id </u>] 
+uaac member add healthwatch.admin [<u>생성한 id</u>] 
 ```
