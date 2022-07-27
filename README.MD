@@ -21,7 +21,7 @@ uaac token client get admin [<U>password</U>]
 
 uaac 계정 생성
 ```
-uaac user add [<u> 생성하려는 id </u>] 
+uaac user add <u>생성하려는 id</u>
 ```
 uaac 계정 매핑
 ```
