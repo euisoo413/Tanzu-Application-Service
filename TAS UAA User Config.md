@@ -47,6 +47,6 @@ uaac users | grep "username"
 
 
 #### Referance
-[CloudFoundry_UAA](https://docs.cloudfoundry.org/uaa/uaa-user-management.html#grant-admin-ldap)
+[docs.cloudfoundry.org/uaa/uaa-user-management.html#grant-admin-ldap](https://docs.cloudfoundry.org/uaa/uaa-user-management.html#grant-admin-ldap)
 
 
