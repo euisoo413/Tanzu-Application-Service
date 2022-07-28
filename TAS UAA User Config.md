@@ -43,3 +43,10 @@ uaac member add healthwatch.admin [생성한 id]
 ```
 uaac users | grep "username"
 ```
+
+
+
+#### Referance
+[CloudFoundry_UAA](https://docs.cloudfoundry.org/uaa/uaa-user-management.html#grant-admin-ldap)
+
+
