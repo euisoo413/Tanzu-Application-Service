@@ -33,6 +33,7 @@ uaac token client get admin [Admin Client Credentials password]
 ```
 uaac user add [생성하려는 id] -p [새로운 Password]
 ```
+
 * uaac 계정 매핑\
 생성한 User가 특정 타일에서 동작할 수 있도록 권한을 넣어 줄 수 있음
 ```
@@ -44,9 +45,16 @@ uaac member add healthwatch.admin [생성한 id]
 uaac users | grep "username"
 ```
 
+#### LDAP 연동
+```
+uaac group map --name scim.read "GROUP-DISTINGUISHED-NAME"
+uaac group map --name scim.write "GROUP-DISTINGUISHED-NAME"
+uaac group map --name cloud_controller.admin "GROUP-DISTINGUISHED-NAME"
+```
+> `GROUP-DISTINGUISHED-NAME` 는 ldap 이름을 뜻함
 
 
 #### Referance
-[docs.cloudfoundry.org/uaa/uaa-user-management.html#grant-admin-ldap](https://docs.cloudfoundry.org/uaa/uaa-user-management.html#grant-admin-ldap)
+[docs.cloudfoundry.org/uaa/uaa-user-management](https://docs.cloudfoundry.org/uaa/uaa-user-management.html#grant-admin-ldap)
 
 
