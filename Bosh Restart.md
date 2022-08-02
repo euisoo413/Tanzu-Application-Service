@@ -15,8 +15,10 @@
 
 ## BOSH Stop
 - Bosh가 새로운 VM을 생성하는 것이 안되도록 함
-```bosh update-resurrection off ```
+
+```bosh update-resurrection off```
 - Bosh를 통해 VM 정지
+
 ```bosh -d [Deployment명] stop --skip-drain```
   - Deployment명은 `bosh vms`를 통해 조회함
   - `--skip-drain`에서 `drain`은 안정적으로 순차적으로 내리는 의미를 갖고 있는데 현 시스템에서는 중단을 예고하였기에 해당 과정을 skip함
