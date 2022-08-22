@@ -50,9 +50,9 @@ bosh는 stemcell을 업로드 함
 bosh -d [deploy이름] deploy [yml파일위치] --vars-store=[변수 저장값] -v [변수명]=[변수값]
 ```
 Question
-** kes runtime config 변경된 것은 어떻게 하면 알수 있는지 
-** deploy 했을 때 변경되는 정보들이 나오는데 비교를 할 수 있는지
-** vm type이나 기타 정보들을 runtime conf에서 굳이 다 가져와서 해야하는지?
+* kes runtime config 변경된 것은 어떻게 하면 알수 있는지 
+* deploy 했을 때 변경되는 정보들이 나오는데 비교를 할 수 있는지
+* vm type이나 기타 정보들을 runtime conf에서 굳이 다 가져와서 해야하는지?
 
 
 
