@@ -36,7 +36,25 @@ om 명령어는 -e, -p등을 넣어야 인증 및 사용가능
 sha256sum 
 
 om cli 사용하기
-# om -e [.yml] -p [PATH:파일명] #업로드하기 
+# 
+
+
+
+```
+om -e [.yml] -p [PATH:파일명] #업로드하기 
+om -e [om-env-dojo.yml] products #çf, p-bosh 등 opsmanager 타일 정보가 나옴
+om -e [om-env-dojo.yml] staged-config -p -cf > dojo.yml #현재 올라간 변경 정보를 저장함
+
+vi dojo.yml -> 원하는 값 수정 가능
+
+om -e [om-env-dojo.yml] configure-product -c dojo.yml
+
+
+
+```
+
+
+
 
 아키텍처 설계
 - NW
@@ -141,12 +159,22 @@ BBS : Container의 DB
 Metric Registrar : Configure metric registarar
 개발자들이 자기 애플리케이션에서 나오는 메트릭을 앱메트릭으로 등록할 수 있는데 매우 어렵다. 커스터마이징 
 
-Errands :후속작업 
 
-일반적으로 최초 설치시는 on 을 해줘야함. 안하면, 보쉬에서 CLI로 켜줘야함. 
+
+## Errands :후속작업 
+- 일반적으로 최초 설치시는 on 을 해줘야함. 안하면, 보쉬에서 CLI로 켜줘야함. 
 최초 설치 후 apply change 시에는 굳이 안해줘도 이미 프로세스가 돌고 있다. 따라서, 설정에서 off해주면 앞으로 다시 켤일은 없다.
-
-
+- Errands 절차
+  ```
+  - bosh -d [cf-!!@#NJKSD] errands smoke_test
+  - bosh -d [cf-!!@#NJKSD] run-errand smoke_test
+  ```
+  * 실제 Errand 파일 경로 -> 클락 글로벌 참조
+  ```
+  - bosh -d [cf-!!@#NJKSD] ssh clock_global
+  - 
+  ```
+  
 
 
 
