@@ -35,25 +35,31 @@ om 명령어는 -e, -p등을 넣어야 인증 및 사용가능
 
 sha256sum 
 
-om cli 사용하기
-# 
-
-
-
+## om cli 사용하기
+om은 opsmanager ui를 대신해서 사용할 수 있다.
+40특히, swapon 등을 설정할 때는 유일한 명령어임
 ```
 om -e [.yml] -p [PATH:파일명] #업로드하기 
 om -e [om-env-dojo.yml] products #çf, p-bosh 등 opsmanager 타일 정보가 나옴
 om -e [om-env-dojo.yml] staged-config -p -cf > dojo.yml #현재 올라간 변경 정보를 저장함
 
+om -e [om-env-dojo.yml] staged-config -p cf -c TRUE -r TRUE > dojo.yml
+# -c 는 크리덴셜의 공개 여부 -R은 크리덴셜 비밀 및 변수처리 여부를 뜻함
+
+om -e [om-env-dojo.yml] staged-config -p -cf > dojo.yml
+
+
 vi dojo.yml -> 원하는 값 수정 가능
 
 om -e [om-env-dojo.yml] configure-product -c dojo.yml
 
-
+om -e [  ] apply-changes
 
 ```
 
-
+```
+diff 비교파일1 비교파일2
+```
 
 
 아키텍처 설계
