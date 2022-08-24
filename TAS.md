@@ -184,7 +184,17 @@ Metric Registrar : Configure metric registarar
 
 
 
-
+## Trouble shooting
+- Go router 정상여부 확인
+  1. 특정 VM에서 ssh 접속 
+  2. etc/hosts 편집해서 DNS Record를 Go Router에서 보도록 수정
+  ```
+  IP  api.sys.[Domain]
+  IP  login.sys.
+  IP  uaa.sys.
+  ```
+- NW가 느리다고 생각될 경우
+  1. 
 
 
 
