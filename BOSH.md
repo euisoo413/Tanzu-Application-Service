@@ -59,7 +59,7 @@ BOSH is a project that unifies release engineering, deployment, and lifecycle ma
 bosh -d "cf-asdasd' ssh [bosh가 알고 있는 vm 이름] -c "커맨드 내용' #
 
 ```
-
+* 
 
 
 
