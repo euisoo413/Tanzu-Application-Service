@@ -52,5 +52,15 @@ BOSH is a project that unifies release engineering, deployment, and lifecycle ma
 |vSphere|VM생성/
 
 
+## BOSH 명령어들
+
+* BOSH가 찍은 여러 VM에 명령어를 보내고 싶은 경우
+```
+bosh -d "cf-asdasd' ssh [bosh가 알고 있는 vm 이름] -c "커맨드 내용' #
+
+```
+
+
+
 
 
