@@ -56,11 +56,12 @@ BOSH is a project that unifies release engineering, deployment, and lifecycle ma
 
 * BOSH가 찍은 여러 VM에 명령어를 보내고 싶은 경우
 ```
-bosh -d "cf-asdasd' ssh [bosh가 알고 있는 vm 이름] -c "커맨드 내용' #
-
+bosh -d "cf-asdasd' ssh [bosh가 알고 있는 vm 이름] -c "커맨드 내용' 
 ```
-* 
-
+* BOSH가 찍은 TAS VM의 로그를 보고 싶은 경우
+```
+bosh -d "cf-asdasd' logs [bosh가 알고 있는 vm 이름]/[instance] -f
+```
 
 
 
