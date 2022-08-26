@@ -20,6 +20,16 @@
  
  - 
 
+## docker file 준비하기
+* 폐쇄망으로 파일을 보내기 위한 과정을 설명함
 
+
+```
+# docker hub 등에 접속이 가능한 외부망
+docker pull nginx 
+docker save
+docker 
+
+```
 
 1534608108
