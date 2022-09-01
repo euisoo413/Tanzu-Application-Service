@@ -1,8 +1,9 @@
-
-
-
 ## 
+Deployment는 Persistent Data를 유지하는 디스크들과 특정한 Releases들로 가득찬, Stemcell로 부터 만들어진 VM들의 모음이다. 이러한 리소스는 배포 매니페스트에 기반하여 IaaS에서 생성되고 중앙 집중식 관리 서버인 (Bosh)Director에 의해 관리된다.
 
+
+
+A deployment is a collection of VMs, built from a stemcell, that has been populated with specific releases and disks that keep persistent data. These resources are created in the IaaS based on a deployment manifest and managed by the Director, a centralized management server.
 
 
 
@@ -11,7 +12,7 @@
 - BOSH가 VM을 생성할 때 YML파일을 참조하는데 그 YML파일은 다양한 `configs`를 참조하여 완성됨
 - 사용자는 customizing을 위해 이 configs를 수정할 수 있는데, 그 과정은 아래와 같음
 
-- 
+
 
 
 
