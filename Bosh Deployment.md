@@ -1,19 +1,64 @@
 ## 
 Deployment는 Persistent Data를 유지하는 디스크들과 특정한 Releases들로 가득찬, Stemcell로 부터 만들어진 VM들의 모음이다. 이러한 리소스는 배포 매니페스트에 기반하여 IaaS에서 생성되고 중앙 집중식 관리 서버인 (Bosh)Director에 의해 관리된다.
 
-
-
 A deployment is a collection of VMs, built from a stemcell, that has been populated with specific releases and disks that keep persistent data. These resources are created in the IaaS based on a deployment manifest and managed by the Director, a centralized management server.
 
 
-
-
 ## 
-- BOSH가 VM을 생성할 때 YML파일을 참조하는데 그 YML파일은 다양한 `configs`를 참조하여 완성됨
+- BOSH가 VM을 생성할 때 YML파일을 참조한다. 최종적으로 manifest.yml 파일은 대
+-  YML파일은 다양한 `configs`를 참조하여 완성됨
 - 사용자는 customizing을 위해 이 configs를 수정할 수 있는데, 그 과정은 아래와 같음
 
 
+```
+---
+name: zookeeper // deployment Name
 
+releases:
+- name: zookeeper // Release Name
+  version: 0.0.5 // Release Name
+  url: https://bosh.io/d/github.com/cppforlife/zookeeper-release?v=0.0.5 // rla
+  sha1: 65a07b7526f108b0863d76aada7fc29e2c9e2095
+
+stemcells:
+- alias: default
+  os: ubuntu-xenial
+  version: latest
+
+update:
+  canaries: 2
+  max_in_flight: 1
+  canary_watch_time: 5000-60000
+  update_watch_time: 5000-60000
+
+instance_groups: // This is what we call VMs
+- name: zookeeper
+  azs: [z1, z2, z3]
+  instances: 5
+  jobs:
+  - name: zookeeper
+    release: zookeeper
+    properties: {}
+  vm_type: default
+  stemcell: default
+  persistent_disk: 10240
+  networks:
+  - name: default
+
+- name: smoke-tests
+  azs: [z1]
+  lifecycle: errand
+  instances: 1
+  jobs:
+  - name: smoke-tests
+    release: zookeeper
+    properties: {}
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default
+
+```
 
 
 
@@ -24,6 +69,8 @@ bosh delete-config [번호 or --name=]   #삭제하기
 bosh update-config [내가 생성한 yml파일] --name=[생성하고 싶은이름] --type=[runtime or cpi or cloud]
 
 ```
+
+
 
 `bosh update-runtime-config`와 `bosh update-config --type=[runtime]` 동일한 의미
 
