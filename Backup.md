@@ -1,25 +1,20 @@
-* 백업 
+## 백업 
 
-BBR
+### BBR
+- BBR CLI 다운로드
+  - 일반적으로 Opsmanager VM에서 작업하는 것이 가장 좋으나, Jumpbox VM에서 작업해도됨
+- BBR 
+링크생성해서 /usr 밑에 갖다두기
+```
+#ln -s /var/vcap/store/bbr-1.9.7-linux-asdi     /usr/local/bin/bbr
+```
 
-
-
-실제 시스템의 백업복구를 해보고,
-
-
-주의 사항service broker
-- Pending 체인지 주의
-- cf cli를 막아야 함 (API를 막기위해 LB를 막는 것을 추천)
-  * 안막을 경우, Garbage가 생길 가능성이 있음 
-
-- 소스와 데스티네이션이 다를 경우
-  - 가비지 콜렉션에 대한 고민
-  - 예방을 하는 수 밖에 없음
-
-
-* 링크생성해서 /usr 밑에 갖다두기
-# ln -s /var/vcap/store/bbr-1.9.7-linux-asdi     /usr/local/bin/bbr
-
+### BOSH Director BBR Backup
+#### 사전 점검
+- bosh Director의 백업 범위
+1. Blobstore : Bosh Release 
+2. DB(Postgre) : Bosh Deployment Meta Data (Manifest)
+3. Credhub : vSphere에 저장되어있긴 함 :Bosh Stemcell
 
 * 백업 최적화
 - 필요없는 파일들 지워놓기
@@ -29,12 +24,39 @@ BBR
 
 
 
-백업이 필요한 이유
-- bosh Director의 백업 범위 : 
-- 1) Blobstore : Bosh Release 
-  2) DB(Postgre) : Bosh Deployment Meta Data (Manifest)
-  3) Credhub : 
-  3) vSphere에 저장되어있긴 함 :Bosh Stemcell  
+
+
+
+실제 시스템의 백업복구를 해보고,
+
+
+주의 사항 service broker
+- Pending 체인지 주의
+- cf cli를 막아야 함 (API를 막기위해 LB를 막는 것을 추천)
+  * 안막을 경우, Garbage가 생길 가능성이 있음 
+
+- 소스와 데스티네이션이 다를 경우
+  - 가비지 콜렉션에 대한 고민
+  - 예방을 하는 수 밖에 없음
+
+### TAS BBR Backup
+
+
+#### 타일별 백업 고민
+
+Isolation Segment 복구
+- Bosh CCK / BBR이 아님을 유의 (BBR의 대상은 NFS, Mysql, Bosh VM) 
+
+- cf set-org로 shared 로 바꿔서 복구할 수도 있으나 백엔드에 연관된 것들과의 호환성을 고려할 필요가 있음
+
+
+- MySQL 백업은 마스터를 살리는 것을 먼저 실행해보고 BBR을 수행해봄 
+
+- NFS를 외부에 설치하면 BBR을 할수 없다.
+
+
+
+
 
 
 
@@ -63,20 +85,11 @@ TAS 모니터링
 없으면 NFS만 백업할 수 있고, 나머지 VM에 대해 백업을 하지 않음 
 BBR VM 내부에 개별 VM의 백업 스크립트를 가지고 있음 
 
-* Idea
-- 백업 후 결과 디렉토리 및 메타데이터에서 "-name: nfs " 등을 삭제하면 특정 VM만 백업할수도 있을거
-- 
+#### Idea
+* BBR Metadata에서 특정 정보만 남겨서 그것만 백업 가능할까?
+- 예시) 백업 후 결과 디렉토리 및 메타데이터에서 "-name: nfs " 등을 삭제하면 특정 VM만 백업
+- 결과) 불가능 - BBR VM에서 해당 작업이 가능하지 않음, 이미 스크립트가 돌고 있어서 해당 파일을 찾고 있기 때문에 추가적인 작업 불가
 
-
-Isolation Segment 복구
-- Bosh CCK / BBR이 아님을 유의 (BBR의 대상은 NFS, Mysql, Bosh VM) 
-
-- cf set-org로 shared 로 바꿔서 복구할 수도 있으나 백엔드에 연관된 것들과의 호환성을 고려할 필요가 있음
-
-
-- MySQL 백업은 마스터를 살리는 것을 먼저 실행해보고 BBR을 수행해봄 
-
-- NFS를 외부에 설치하면 BBR을 할수 없다.
 
 
 bosh cck 는 VM과 Disk(Persistent만) 체크함
