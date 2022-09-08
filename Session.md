@@ -37,8 +37,12 @@
 - TAS Referance Archi, 의왕 DC 기준
 
 1. vCenter Level 
-2. VM Resource 수량에 따른 찍히는 것
-3. 
+  - [vSphere 설정하기](https://docs.pivotal.io/ops-manager/2-10/vsphere/config.html#create-az) : Bosh Director Tile - Setting - AZ 
+    - 
+    - [Host Groups in vSphere](https://docs.pivotal.io/ops-manager/2-10/vsphere/host-groups.html)
+    - [Host Affinity Rule](https://docs.pivotal.io/ops-manager/2-10/vsphere/host-groups.html#host-affinity-rule)
+3. VM Resource 수량에 따른 찍히는 것
+4. 
 
 
 
