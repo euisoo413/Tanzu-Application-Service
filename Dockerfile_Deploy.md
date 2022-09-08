@@ -25,11 +25,16 @@
 
 
 ```
-# docker hub 등에 접속이 가능한 외부망
+# docker hub 등에 접속이 가능한 외부망에서 작업
 docker pull nginx 
-docker save
-docker 
+docker run -d -p 8080:80 nginx
+docker save nginx:latest -o nginx.tar
+
+# 폐쇄망 환경에서 
+docker load -i nginx.tar
+docker run -d -p 8080:80 nginxbosh bosh 
 
 ```
+
 
 1534608108
