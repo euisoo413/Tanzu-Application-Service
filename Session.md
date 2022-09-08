@@ -60,6 +60,7 @@
 #### Bosh Manifest
 - Manifest는 Release와 Stemcell 그리고 하드웨어를 이용해 실제 배포를 요청하는 계획서
 - Manifest 파일의 중복 사용을 위해 config 파일을 만들어 놓을 수도 있음
+- 실제 배포될 때 사용되는 Manifest에는 Manifest.yml과 Configs가 포함됨
 - configs 종류
 1. Cloud-Config
 2. Runtime-Config
