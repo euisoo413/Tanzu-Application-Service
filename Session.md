@@ -6,9 +6,9 @@
 - 
 
 3. Bosh - vSphere의 관계
-- Bosh 타일 설치 시, vSphere에 대한 정보 필요 (
+- Bosh 타일 설치 시, vSphere에 대한 정보 필요
 > vCenter 관련 정보 (이름, 주소, 계정ID/PW)
-vCenter에서 사용할 정보들 (Disk)
+>vCenter에서 사용할 정보들 (Disk)
 > vCenter의 AZ 설정
 > vCenter IP 대역 설정 (네트워크 이름, vCenter의 NW이름, IP대역 및 DNS 등)
 > 
