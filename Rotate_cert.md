@@ -12,6 +12,34 @@
 - How to rotate an already expired /services/tls_ca certificate: https://community.pivotal.io/s/article/How-to-rotate-and-already-expired-services-tls-ca-certificate?language=en_US
 
 
+### Root CA, Leaf Cert
+#### 개념
+- 중요 데이터를 다루는 대부분의 웹 사이트들은 HTTPS를 통해 서비스를 하는데, SSL 인증서는 HTTPS 통신을 통해 웹 사이트의 콘텐츠가 브라우저에 전송되는 동안 사이트에서 주고받는 모든 데이터를 암호화 한다. 엄밀히 말하면, 보안이 적용된 통신 채널을 제공하는 것이다.
+
+SSL 인증서를 통해 암호화/복호화를 거치게 되며, 클라이언트와 서버 간의 통신을 보안화하여 스니핑이나 피싱을 방지할 수 있다.
+
+SSL인증서는 CA라고하는 인증서 발급회사에서 시작하는 Root 인증서에서 시작된다. 일반적으로 인증서는 Root, Intermediate, Leaf(서버) 3단계로 구분하며, 이를 인증서 체인이라고 한다. 일반적으로 사용자들이 구매하는 인증서는 Leaf 인증서를 의미한다. 
+
+
+인증을 받는 절차
+- 사용자는 브라우저를 통해 특정 웹 사이트에 접근하면, 브라우저는 해당 웹 사이트에서 인증서를 내려받는다. 브라우저는 내려받은 인증서를 분석하여 Root에 다시 연결하기 시작한다. 이렇게 계속 추적하며 루트 인증서에 도달할 때까지 역추적한다.
+
+
+#### 인증서의 생성의 과정 
+*openSSL을 사용한 경우*
+1. RSA Key Pair 생성
+
+2. CSR 생성을 위한 rootca_openssl.conf 생성
+
+3. 1번과 2번을 통해 
+
+
+
+#### 회전을 하는 이유
+
+
+
+
 ### with Ops Manager API 
 
 ```
